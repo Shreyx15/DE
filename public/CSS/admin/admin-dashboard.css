@@ -1,0 +1,117 @@
+.right-side {
+    margin: 10px;
+    margin-left: 280px;
+    display: block;
+    margin-top: 70px;
+
+}
+
+
+.margin-cards-collection {
+    display: flex;
+
+}
+
+
+.margin-card {
+    background-color: #E81828;
+    width: 25%;
+    height: 120px;
+    padding: 0;
+    color: white;
+    margin: 0 17px 0 17px;
+    border-radius: 7px 7px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.card-upper {
+    display: flex;
+    color: rgb(255, 255, 255);
+}
+
+.fa-chart-simple {
+    margin: auto auto auto 100px;
+    color: rgba(110, 110, 110, 0.505);
+}
+
+.margin-number {
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Gilroy', sans-serif;
+    padding-top: 0px;
+    margin-bottom: 0;
+    padding-left: 10px;
+}
+
+.margin-text {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10px;
+}
+
+.margin-more-info {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(142, 28, 28);
+    text-decoration: none;
+    display: flex;
+    padding-left: 32%;
+    padding-right: 25%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: white;
+    border-radius: 0 0 7px 7px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.margin-more-info:hover {
+    color: rgb(45, 255, 248);
+}
+
+
+.charts {
+    display: flex;
+    padding: 0;
+
+}
+
+#piechart {
+    margin: 65px 8px;
+    width: 48%;
+    height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 7px;
+    background-color: white;
+    padding-bottom: 70px;
+    font-family: sans-serif;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.pie-chart-2 {
+    margin-left: 20px;
+
+}
+
+.pie-chart-3 {
+    margin-top: 0;
+}
+
+#chart-line-2 {
+    margin-top: 0;
+}
+
+
+.charts-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+
+.header {
+    background-color: rgba(0, 0, 0, 0.77);
+    border-radius: 7px 7px 0 0;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}

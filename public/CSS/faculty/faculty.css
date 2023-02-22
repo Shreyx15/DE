@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0 0.7rem;
+}
+
+.overview {
+    border: 2px solid rgba(121, 84, 5, 0.454);
+    background-color: rgba(255, 199, 96, 0.272);
+    border-radius: 3rem;
+    height: 2rem;
+    margin: 0.5rem 0;
+
+    display: flex;
+    place-items: center;
+}
+
+.profile {
+    margin: 0.5rem 0;
+    display: flex;
+    place-items: center;
+}
+
+.mark-attendance {
+    margin: 0.5rem 0;
+    display: flex;
+    place-items: center;
+}
+
+.student-report {
+    margin: 0.5rem 0;
+    display: flex;
+    place-items: center;
+}
+
+.class-report {
+    margin: 0.5rem 0;
+    display: flex;
+    place-items: center;
+}
+
+.check-timetable {
+    margin: 0.5rem 0;
+    display: flex;
+    place-items: center;
+}
+
+.left-side-second-box {
+    margin: 3rem 0;
+}
+
+.setting {
+    display: flex;
+    place-items: center;
+}
+
+.logout {
+    margin-top: 0.5rem;
+    display: flex;
+    place-items: center;
+}
+
+.right-menu {
+    width: 80vw;
+    height: 3.7rem;
+    background-color: rgb(12, 13, 13);
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+}
+
+.deshbord-card {
+    margin: 4rem 0 0 0;
+    display: flex;
+    column-gap: 1rem;
+
+
+}
+
+
+.right-mark-attendance {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.right-student-report {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.right-class-report {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+h5 {
+    font-size: medium;
+    margin: 1rem 0;
+}
+
+button {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    font-size: medium;
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 3rem 0 0 0;
+}
+
+hr {
+    margin: 1rem 0 0 0;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 86vw;
+    border-radius: 5px;
+}
+
+.menu-bar {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 3rem;
+}
+
+
+
+
+/* 
+CSS FOR CLASS-SELECTION CARD */
+
+
+.card {
+    margin: 40px 20px 0 20px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.card-title {
+    font-size: small;
+    opacity: 75%;
+    padding-bottom: 7px;
+}
+
+.card-text {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.datepicker {
+    width: 25%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-text {
+    font-weight: bold;
+    margin: 1px;
+}
+
+.form-select {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form-select-title {
+    font-size: medium;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+
+
+/* MARK-ATTENDANCE PAGE */
+
+.separator {
+    opacity: 50%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.card-text-mark-attendance {
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.text-date {
+    margin: 20px 0 20px;
+    padding-left: 10px;
+    background-color: rgb(249, 247, 244);
+    max-width: 300px;
+    border-radius: 7px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+
+}
+
+.beside-date {
+    width: 15%;
+    position: absolute;
+    top: 85px;
+    right: 25px;
+    margin-left: 300px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+}

@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0bd7fd1f80.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/CSS/admin/addStudent.css">
+    <link rel="stylesheet" href="/CSS/admin/admin.css">
+
+    <title>Student Registration Form In Bootstrap 5 </title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Nunito Sans";
+            background-color: #ffffff;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        th {
+            padding: 10px !important;
+        }
+
+        .table {
+            margin-bottom: 0px;
+        }
+
+        .dropdown-toggle {
+            background-color: #fff;
+        }
+
+        .table>:not(caption)>*>* {
+            border-color: #F4BE2C;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .table>:not(:first-child) {
+            border-top: #F4BE2C;
+        }
+
+        .table>thead {
+            background-color: #F4BE2C;
+            color: #fff;
+        }
+
+        .row {
+            align-items: center;
+        }
+
+        .form-control {
+            line-height: 2;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #F4BE2C;
+        }
+
+        .form-check-input:checked {
+            background-color: #F4BE2C;
+            border-color: #F4BE2C;
+        }
+
+        .form-check-input:focus {
+            box-shadow: none;
+        }
+
+        .form-control:hover {
+            border-color: #F4BE2C;
+        }
+
+        .bg-custom {
+            border: 1px solid #F4BE2C;
+        }
+
+        .btn-custom {
+            border-color: #F4BE2C;
+            color: #F4BE2C;
+        }
+
+        .btn-custom:hover {
+            background-color: #F4BE2C;
+            color: #fff;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+        }
+
+        .row.m-0 {
+            border-bottom: 1px solid #f4be2b;
+            margin-bottom: 15px !important;
+            background: #f4be2b;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .row.mb-2 {
+            margin: 0;
+        }
+
+        .col-lg-4 p {
+            font-size: 12px;
+        }
+
+        @media(max-width: 992px) {
+            form {
+                width: 80%;
+            }
+        }
+
+        @media(max-width: 575px) {
+            form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(221, 221, 221);">
+
+
+
+    <div class="container-dashboard">
+        <div class="navbar-dashboard-for-student" style="z-index: 1;">
+            <div class="bars" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
+            <div class="navbar-text-for-student">
+                Student Management System | Admin Dashboard
+
+            </div>
+
+        </div>
+        <div class="left-bar-for-student" style="font-family: sans-serif;">
+            <div class="left-bar-title" style="height: 97px; padding-top: 10px;">
+                <div class="image-logo">
+                    <img src="/images/logo.png" alt="" srcset="">
+
+                </div>
+                <div class="gecm-title" style="padding-top: 10px; font-size: 2.5rem; text-align: center;">
+                    GECM
+                </div>
+            </div>
+            <!-- <hr> -->
+            <a href=" /dashboard" style="padding: 10px 20px;">
+                <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Dashboard</span></a>
+            <a href=""><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span class="link-text">Manage
+                    Student</span></a>
+            <a href=""><i class="fa-solid fa-user-tie fs-1x fa-fw"></i><span class="link-text">Add
+                    Student</span></a>
+            <a href=""><i class="fa-solid fa-chalkboard fa-1x fa-fw"></i><span class="link-text">Manage
+                    Course</span></a>
+            <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add Course</span></a>
+            <a href=""><i class="fa-solid fa-book fs-1x fa-fw"></i><span class="link-text">Manage
+                    Subject</span></a>
+            <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add
+                    Subject</span></a>
+            <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
+                    Attendance</span></a>
+
+        </div>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Please Fill all the necessary fields properly</strong>(Necessary fields are marked with "*"
+            before
+            field
+            name)
+        </div>
+        <form class="container" style="z-index: 1;" action="/send" method="post" id="success-form">
+            <div class="success-card" style="position: fixed;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <p class="success">Student Added!</p>
+                <div class="success-btn">
+                    <button type="submit" class="btn btn-success btn-lg" id="add-another-btn">continue</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="right-side">
+            <div class="container  mt-5 mb-5">
+                <form class="bg-light p-4 m-auto" action="" id="myform" method="post">
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <p class="required">First Name</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" placeholder="First Name" name="F]first_name"
+                                required>
+                        </div>
+                        <div class="col-lg-4">
+                            <p>(max 30 characters a-z and A-Z)</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <p class="required">Last Name</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" required>
+                        </div>
+                        <div class="col-lg-4">
+                            <p>(max 30 characters a-z and A-Z)</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <p class="required">Father's Name</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" placeholder="Father's Name" name="father_name"
+                                required>
+                        </div>
+                        <div class="col-lg-4">
+                            <p>(max 30 characters a-z and A-Z)</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <p class="required">Date of Birth</p>
+                        </div>
+                        <div class="col-lg-5 d-flex">
+                            <div class="dropdown">
+                                <select name="day" id="day">
+                                    <option selected disabled>Day</option>
+                                </select>
+                                <select name="month" id="month">
+                                    <option selected disabled>Month</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                                <select name="year" id="year">
+                                    <option selected disabled>Year</option>
+                                    <% for (var i=0; i < range.length; i++) {%>
+                                        <option value="<%= range[i] %>">
+                                            <%= range[i] %>
+                                        </option>
+                                        <% }%>
+
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Email id </p>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" placeholder="Email id" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Gender</p>
+                            </div>
+                            <div class="col-lg-5 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1"
+                                        value="Male">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1"
+                                        value="Female">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Address</p>
+                            </div>
+                            <div class="col-lg-7">
+                                <textarea class="form-control" rows="5" name="address"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Pin code</p>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" placeholder="Pin code" name="pin_code" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">State </p>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" placeholder="State" name="state" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">City </p>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" placeholder="City" name="city" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p>Hobbies </p>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                        value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">Drawing </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                        value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Singing </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                        value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Dancing </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                        value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Sketching </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Qualification </p>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="bg-custom table-responsive">
+                                    <table class="table ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sl.No.</th>
+                                                <th scope="col">Examination</th>
+                                                <th scope="col">Board</th>
+                                                <th scope="col">Percentage</th>
+                                                <th scope="col">Year Of Passing</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td> <input type="text" class="form-control" placeholder="Examination">
+                                                </td>
+                                                <td> <input type="text" class="form-control" placeholder="Board"></td>
+                                                <td> <input type="text" class="form-control" placeholder="Percentage">
+                                                </td>
+                                                <td> <input type="text" class="form-control"
+                                                        placeholder="Year Of Passing">
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-2">
+                                <p class="required">Courses</p>
+                            </div>
+                            <div class="col-lg-5 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="course" id="flexRadioDefault1"
+                                        value="CE">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        CE
+                                    </label>
+                                </div>
+                                <div class="form-check mx-3">
+                                    <input class="form-check-input" type="radio" name="course" id="flexRadioDefault1"
+                                        value="IT">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        IT
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-lg btn-block" id="form-send"
+                            style="width: 15%;">Send
+                            Now</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        function myFunction(x) {
+            element = $(".left-bar-for-student");
+            if (element.css("display") == "none") {
+                $(".navbar-dashboard-for-student").css("margin-left", "270px");
+                $(".left-bar-for-student").css("display", "block");
+                x.classList.toggle("change");
+                $(".right-side").css("margin-left", "280px");
+
+            } else {
+                element.css("display", "none");
+                $(".navbar-dashboard-for-student").css("margin-left", "0");
+                $(x).removeClass("change");
+                $(".right-side").css("margin-left", "10px");
+
+
+            }
+        }
+
+        function change(x) {
+            x.classList.toggle("change");
+        }
+
+
+        // $(".btn-custom").click(function (e) {
+        //     e.preventDefault();
+        //     const length = $(".form-control").length;
+        //     var isValid = true;
+        //     for (var i = 0; i < length; i++) {
+        //         if ($(".form-control")[i].hasAttribute("required") && $(".form-control")[i].value == "") {
+        //             isValid = false;
+        //         }
+        //     }
+
+        //     if (!isValid) {
+        //         if ($(".left-bar").css("display") != "none") {
+        //             $("alert").css("margin", "20px 20px 0 280px");
+        //         }
+        //         $(".alert").css("display", "block");
+        //     } else {
+        //         $(".success-card").css("display", "block");
+        //         document.body.style.overflow = "hidden";
+        //         $("#myform").attr('action', 'addStudent');
+        //         $("#myform").submit();
+        //     }
+
+
+
+        // });
+    </script>
+    <script src="/JS/index.js"></script>
+
+</body>
+
+</html>
