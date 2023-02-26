@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Student = require("../Models/users");
+const { Student } = require("../Models/users");
 
 
 
@@ -28,7 +28,7 @@ router.post('/addstudent', function (req, res) {
         month: req.body.month,
         year: req.body.year
     }
-    var fname = req.body.father_name;
+    var fathername = req.body.father_name;
     var date = new Date(String(dob.year) + '-' + String(dob.month) + '-' + String(dob.day));
     var email = req.body.email;
     var course = req.body.course;
@@ -36,8 +36,8 @@ router.post('/addstudent', function (req, res) {
     const student = new Student({
         first_name: fname,
         last_name: lname,
-        father_name: fname,
-        full_name: lname + fname + fname,
+        father_name: fathername,
+        full_name: lname + fname + fathername,
         dob: date,
         email: email,
         semester: 5,

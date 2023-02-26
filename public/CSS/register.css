@@ -1,0 +1,50 @@
+body {
+    background-image: linear-gradient(to right, rgb(255, 135, 92), rgb(255, 98, 145));
+
+}
+
+.card-container {
+    width: 350px;
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.714);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.input-field {
+    text-align: center;
+    margin: auto;
+}
+
+.input {
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+}
+
+.submit-btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10%;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin: 10% 11%;
+
+}
+
+
+.form-container {
+    margin-top: 15%;
+}
+
+.title {
+    margin-top: 12px;
+    margin-left: 12px;
+    font-family: 'Montserrat';
+    color: black;
+    font-size: 1.2rem;
+}
