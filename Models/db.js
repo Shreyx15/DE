@@ -53,6 +53,10 @@ const facultySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    subjects: {
+        type: [String],
+        required: true
+    }
 });
 
 
