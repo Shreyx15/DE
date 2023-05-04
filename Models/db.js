@@ -68,11 +68,31 @@ const adminSchema = new mongoose.Schema({
     },
 });
 
+const attendanceSchema = new mongoose.Schema({
+    enrollment_number: {
+        type: Number,
+        required: true
+    },
+    subject: {
+        type: String,
+        required: true
+    },
+    class_number: {
+        type: Number,
+        required: true
+    },
+    created_at: {
+        type: Date,
+        default: Date.now,
+        required: true
+    }
+});
 
 const Student = mongoose.model('Student', studentSchema);
 const Faculty = mongoose.model('Faculty', facultySchema);
 const Admin = mongoose.model('Admin', adminSchema);
+const Attendance = mongoose.model('Attendance', attendanceSchema);
 
 module.exports = {
-    Student, Faculty, Admin
+    Student, Faculty, Admin, Attendance
 };

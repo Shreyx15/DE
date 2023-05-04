@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const Student = require("../Models/db");
+const { verify } = require('./auth');
 
 
 
-router.get("/facultyHome", function (req, res) {
+router.get("/facultyHome", verify, function (req, res) {
     res.render("faculty/facultyHome");
 });
 
@@ -15,4 +16,7 @@ router.get("/mark-attendance", function (req, res) {
     res.render("mark");
 });
 
+router.get("/download_attendance", verify, function () {
+
+});
 module.exports = router;

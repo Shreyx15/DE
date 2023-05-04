@@ -24,11 +24,13 @@ app.use(session({
 //imported routes
 const adminRoutes = require("./routes/admin");
 const facultyRoutes = require("./routes/faculty");
-const authRoutes = require("./routes/auth");
+const { router } = require("./routes/auth");
+const attendanceRoute = require("./routes/attendance");
 
 app.use('/users/admin', adminRoutes);
 app.use('/users/faculty', facultyRoutes);
-app.use('/users', authRoutes);
+app.use('/users', router);
+app.use('', attendanceRoute);
 
 app.listen(3000, function () {
     console.log("port is active now!");

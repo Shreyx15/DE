@@ -1,0 +1,56 @@
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+
+<form action="" id="attendance">
+    <input type="text" placeholder="Enrollment Number" name="enrollment_number">
+    <input type="text" placeholder="Subject" name="subject">
+    <input type="number" placeholder="Class Number" name="class_number">
+    <input type="submit" value="submit">
+</form>
+
+<div class="attendance">
+
+</div>
+<script>
+    $("#attendance").submit(function (event) {
+        event.preventDefault();
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+
+                let enrollment_number = $('input[name="enrollment_number"]').val();
+                let subject = $('input[name="subject"]').val();
+                let class_number = $('input[name="class_number"]').val();
+
+                var data = {
+                    enrollment_number: enrollment_number,
+                    subject: subject,
+                    class_number: class_number,
+                    longitude: longitude,
+                    latitude: latitude
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/takeAttendance',
+                    data: data,
+                    success: function (response) {
+                        $("#attendance").css("display", "none");
+                        $(".attendance").append("<h1>" + response + "</h1>");
+                        $(".attendance").css("display", "block");
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+            });
+        }
+
+
+
+    });
+</script>
