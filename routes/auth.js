@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const { Student, Faculty, Admin } = require('../Models/users');
+const { Student, Faculty, Admin } = require('../Models/db');
 const bcrypt = require('bcrypt');
 
 router.get("/login", function (req, res) {
-
     res.render("login");
 });
 
@@ -12,33 +11,27 @@ router.post("/login", function (req, res) {
     let password = req.body.password;
     let role = req.body.role;
 
-    if (role == "Student") {
-        Student.find({ enroll_no: username }, function (err, docs) {
+    if (role === "Faculty") {
+        Faculty.findOne({ username: username }).exec(function (err, faculty) {
             if (err) {
-                console.log(err);
-                return;
+                console.error(err);
+            } else {
+                bcrypt.compare(password, faculty.password, (err, result) => {
+                    if (!result) {
+                        res.send("wrong password");
+                    } else {
+                        req.session.facultyId = faculty._id;
+                        req.session.isLoggedin = true;
+                        req.session.username = faculty.username;
+                        console.log(faculty._id);
+                        res.cookie('sessionId', req.session.id);
+                        res.redirect('/users/faculty/facultyHome');
+                    }
+                });
             }
-
-            console.log(docs[0].password);
-            let userps = docs[0].password;
-
-            bcrypt.compare(password, userps).then(function (match) {
-                if (match) {
-                    res.redirect("/users/faculty/facultyHome");
-                } else {
-                    res.send("lol");
-                }
-            });
         });
 
-
-    }
-
-    if (role == "Faculty") {
-        console.log("do something!!");
-    }
-
-    if (role == "Administrator") {
+    } else if (role === "Student") {
         console.log("do something!!");
     }
 });
@@ -49,20 +42,65 @@ router.get("/register", function (req, res) {
 });
 
 router.post("/register", function (req, res) {
-    bcrypt.hash(req.body.password, 10).then(function (hash) {
-        Student.updateOne({ enroll_no: req.body.username }, { $set: { password: hash } }, function (err, docs) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("document updated!!");
-            }
-        });
-        const student = Student.find({ enroll_no: req.body.username });
-        res.send("done");
+
+    let username = req.body.username;
+    let password = req.body.password;
+    let role = req.body.role;
+
+    bcrypt.hash(password, 10).then(function (hash) {
+        if (role === "faculty") {
+            const newfaculty = new Faculty({
+                username: username,
+                password: hash,
+            });
+            newfaculty.save()
+                .then(() => {
+                    res.send("registered successfully");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+        } else if (role === "student") {
+            Student.updateOne({ username: username }, { password: hash })
+                .then(() => {
+                    res.send("registered successfully");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } else {
+            res.write("select the role first");
+        }
     });
 
 
 });
 
 
-module.exports = router;
+router.get("/logout", verify, function (req, res) {
+    res.clearCookie('sessionId');
+    res.clearCookie('connect.sid');
+    req.session.destroy((err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            res.redirect("/users/login");
+        }
+    });
+});
+
+function verify(req, res, next) {
+    if (!isEmpty(req.cookies)) {
+        next();
+    } else {
+        res.redirect("/users/login");
+
+    }
+}
+
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+
+module.exports = { router, verify };

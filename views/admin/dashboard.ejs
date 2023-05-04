@@ -1,0 +1,334 @@
+<link rel="stylesheet" href='/CSS/admin/admin.css'>
+<link rel="stylesheet" href="/CSS/admin/admin-dashboard.css">
+<link href=" https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0bd7fd1f80.js" crossorigin="anonymous"></script>
+
+<!-- for pie charts -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+<script>
+    $(document).ready(function () {
+        var ctx = $("#chart-line");
+        var myLineChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Student", "Staff"],
+                datasets: [{
+                    data: [120, 22],
+                    backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                }
+            }
+        });
+
+
+
+        var ctx2 = $(".chart-2");
+        var myLineChart = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ["CSE", "ECE", "Electrical", "Mechanical", "Civil", "Automobile"],
+                datasets: [{
+                    data: [7, 7, 5, 6, 4, 8],
+                    backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                }
+            }
+        });
+    });
+
+    var ctx = $("#chart-line-2");
+    var myLineChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Student", "Staff"],
+            datasets: [{
+                data: [120, 22],
+                backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+            }
+        }
+    });
+
+</script>
+
+<div class="container-dashboard">
+    <div class="navbar-dashboard">
+        <div class="bars" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
+        <div class="navbar-text">
+            Student Management System | Admin Dashboard
+
+        </div>
+
+    </div>
+
+    <div class="left-bar">
+        <div class="left-bar-title">
+            <div class="image-logo">
+                <img src="/images/logo.png" alt="" srcset="">
+
+            </div>
+            <div class="gecm-title" style="padding-top: 13px; font-size: 2.5rem;">
+                GECM
+            </div>
+        </div>
+        <!-- <hr> -->
+        <a href="/users/admin/dashboard">
+            <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Dashboard</span></a>
+        <a href=""><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span class="link-text">Manage Student</span></a>
+        <a href="/users/admin/addStudent"><i class="fa-solid fa-user-tie fs-1x fa-fw"></i><span class="link-text">Add
+                Student</span></a>
+        <a href=""><i class="fa-solid fa-chalkboard fa-1x fa-fw"></i><span class="link-text">Manage Course</span></a>
+        <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add Course</span></a>
+        <a href=""><i class="fa-solid fa-book fs-1x fa-fw"></i><span class="link-text">Manage Subject</span></a>
+        <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add Subject</span></a>
+        <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
+                Attendance</span></a>
+
+    </div>
+    <div class="right-side">
+        <div class="margin-cards-collection">
+            <div class="margin-card" style="margin-left: 7px; background-color: rgb(61, 61, 191);">
+                <div class="card-upper" style="color: white;">
+                    <div>
+                        <p class="margin-number">
+                            12
+                        </p>
+                        <p class="margin-text">
+                            Total Students
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-chart-simple fa-3x"></i>
+                </div>
+
+                <a href="" class="margin-more-info" style="background-color: rgb(34, 34, 154);">
+                    <p style="padding: 0 10px 0 0; margin: 0; z-index: 1;">
+                        More-Info
+                    </p>
+                    <i class="fa-solid fa-circle-arrow-right"></i>
+                </a>
+            </div>
+            <div class="margin-card" style="margin-left: 7px;">
+                <div class="card-upper">
+                    <div>
+                        <p class="margin-number">
+                            17
+                        </p>
+                        <p class="margin-text">
+                            Total Staff
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-chart-simple fa-3x"></i>
+                </div>
+
+                <a href="" class="margin-more-info">
+                    <p style="padding: 0 10px 0 0; margin: 0; z-index: 1;">
+                        More-Info
+                    </p>
+                    <i class="fa-solid fa-circle-arrow-right"></i>
+                </a>
+            </div>
+            <div class="margin-card" style="margin-left: 7px; background-color:#FFC72C">
+                <div class="card-upper" style="color: black;">
+                    <div>
+                        <p class="margin-number">
+                            11
+                        </p>
+                        <p class="margin-text">
+                            Total Courses
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-chart-simple fa-3x"></i>
+                </div>
+
+                <a href="" class="margin-more-info" style="background-color:#9e7c1e;">
+                    <p style="padding: 0 10px 0 0; margin: 0; z-index: 1;">
+                        More-Info
+                    </p>
+                    <i class="fa-solid fa-circle-arrow-right"></i>
+                </a>
+            </div>
+            <div class="margin-card" style="margin-left: 7px; background-color: rgba(0, 176, 0, 0.875)">
+                <div class="card-upper">
+                    <div>
+                        <p class="margin-number">
+                            22
+                        </p>
+                        <p class="margin-text">
+                            Total Subjects
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-chart-simple fa-3x"></i>
+                </div>
+
+                <a href="" class="margin-more-info" style="background-color: rgb(1, 122, 1)">
+                    <p style="padding: 0 10px 0 0; margin: 0; z-index: 1;">
+                        More-Info
+                    </p>
+                    <i class="fa-solid fa-circle-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="charts-container">
+
+            <div class="charts">
+                <div id="piechart">
+                    <div class="page-content page-container" id="page-content">
+                        <div class="padding">
+                            <div class="row">
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <div class="col-sm-8 col-md-6">
+                                        <div class="card">
+                                            <div class="header">Student and Staff chart</div>
+                                            <div class="card-body" style="height: 420px">
+                                                <div class="chartjs-size-monitor"
+                                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                                    <div class="chartjs-size-monitor-expand"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:200%;height:200%;left:0; top:0">
+                                                        </div>
+                                                    </div>
+                                                </div> <canvas id="chart-line" width="299" height="200"
+                                                    class="chartjs-render-monitor"
+                                                    style="display: block; width: 299px; height: 200px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="piechart" class="pie-chart-2">
+                    <div class="page-content page-container" id="page-content">
+                        <div class="padding">
+                            <div class="row">
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <div class="col-sm-8 col-md-6">
+                                        <div class="card">
+                                            <div class="header">Total Subjects in each course</div>
+                                            <div class="card-body" style="height: 420px">
+                                                <div class="chartjs-size-monitor"
+                                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                                    <div class="chartjs-size-monitor-expand"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:200%;height:200%;left:0; top:0">
+                                                        </div>
+                                                    </div>
+                                                </div> <canvas id="chart-line" class="chart-2" width="299" height="200"
+                                                    class="chartjs-render-monitor"
+                                                    style="display: block; width: 299px; height: 200px; z-index: 1;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="charts" id="chart-line-2">
+                <div id="piechart" class="pie-chart-3">
+                    <div class="page-content page-container" id="page-content">
+                        <div class="padding">
+                            <div class="row">
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <div class="col-sm-8 col-md-6">
+                                        <div class="card">
+                                            <div class="header">Total Subjects in each course</div>
+                                            <div class="card-body" style="height: 420px">
+                                                <div class="chartjs-size-monitor"
+                                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                                    <div class="chartjs-size-monitor-expand"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink"
+                                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                                        <div
+                                                            style="position:absolute;width:200%;height:200%;left:0; top:0">
+                                                        </div>
+                                                    </div>
+                                                </div> <canvas id="chart-line-2" class="chart-3" width="299"
+                                                    height="200" class="chartjs-render-monitor"
+                                                    style="display: block; width: 299px; height: 200px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<script>
+    function myFunction(x) {
+        element = $(".left-bar");
+        if (element.css("display") == "none") {
+            $(".navbar-dashboard").css("margin-left", "270px");
+            $(".left-bar").css("display", "block");
+            x.classList.toggle("change");
+            $(".right-side").css("margin-left", "280px");
+
+        } else {
+            element.css("display", "none");
+            $(".navbar-dashboard").css("margin-left", "0");
+            $(x).removeClass("change");
+            $(".right-side").css("margin-left", "10px");
+
+
+        }
+    }
+
+    function change(x) {
+        x.classList.toggle("change");
+    }
+</script>

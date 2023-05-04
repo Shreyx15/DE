@@ -1,20 +1,21 @@
 const router = require('express').Router();
-const { Student } = require("../Models/users");
+const { Student } = require("../Models/db");
 
 
 
 router.get("/dashboard", function (req, res) {
-    res.render("dashboard");
+    res.render("admin/dashboard");
 });
-
-
+router.get("/admin", function (req, res) {
+    res.render("admin/admin");
+});
 
 router.get('/addStudent', function (req, res) {
     range = []
     for (let i = 1990; i <= 2022; i++) {
         range.push(i);
     }
-    res.render("addstudent", {
+    res.render("admin/addstudent", {
         'years': range
     });
 });
@@ -49,5 +50,15 @@ router.post('/addstudent', function (req, res) {
     res.redirect('/users/admin/addstudent');
 });
 
+
+router.get("/addFaculty", function (req, res) {
+    range = []
+    for (let i = 1990; i <= 2022; i++) {
+        range.push(i);
+    }
+    res.render("admin/addFaculty", {
+        'years': range
+    });
+});
 
 module.exports = router;

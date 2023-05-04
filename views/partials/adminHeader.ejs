@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0bd7fd1f80.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/CSS/admin/addStudent.css">
+    <link rel="stylesheet" href="/CSS/admin/admin.css">
+    <title>Student Registration Form In Bootstrap 5 </title>
+
+</head>
+
+<body style="background-color: rgb(221, 221, 221);">
+
+
+
+    <div class="container-dashboard">
+        <div class="navbar-dashboard-for-student" style="z-index: 1;">
+            <div class="bars" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
+            <div class="navbar-text-for-student">
+                Student Management System | Admin Dashboard
+
+            </div>
+
+        </div>
+        <div class="left-bar-for-student" style="font-family: sans-serif;">
+            <div class="left-bar-title" style="height: 97px; padding-top: 10px;">
+                <div class="image-logo">
+                    <img src="/images/logo.png" alt="" srcset="">
+
+                </div>
+                <div class="gecm-title" style="padding-top: 10px; font-size: 2.5rem; text-align: center;">
+                    GECM
+                </div>
+            </div>
+            <!-- <hr> -->
+            <a href="/users/admin/dashboard" style="padding: 10px 20px;">
+                <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Dashboard</span></a>
+            <a href=""><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span class="link-text">Manage
+                    Student</span></a>
+            <a href="/users/admin/addStudent"><i class="fa-solid fa-user-tie fs-1x fa-fw"></i><span
+                    class="link-text">Add
+                    Student</span></a>
+            <a href=""><i class="fa-solid fa-chalkboard fa-1x fa-fw"></i><span class="link-text">Manage
+                    Course</span></a>
+            <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add Course</span></a>
+            <a href=""><i class="fa-solid fa-book fs-1x fa-fw"></i><span class="link-text">Manage
+                    Subject</span></a>
+            <a href=""><i class="fa-solid fa-plus fs-1x fa-fw"></i><span class="link-text">Add
+                    Subject</span></a>
+            <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
+                    Attendance</span></a>
+
+        </div>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Please Fill all the necessary fields properly</strong>(Necessary fields are marked with "*"
+            before
+            field
+            name)
+        </div>
+        <form class="container" style="z-index: 1;" action="/send" method="post" id="success-form">
+            <div class="success-card" style="position: fixed;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <p class="success">Student Added!</p>
+                <div class="success-btn">
+                    <button type="submit" class="btn btn-success btn-lg" id="add-another-btn">continue</button>
+                </div>
+            </div>
+        </form>

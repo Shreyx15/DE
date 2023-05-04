@@ -1,0 +1,31 @@
+</div>
+<script>
+    function myFunction(x) {
+        element = $(".left-bar-for-student");
+        if (element.css("display") == "none") {
+            $(".navbar-dashboard-for-student").css("margin-left", "270px");
+            $(".left-bar-for-student").css("display", "block");
+            x.classList.toggle("change");
+            $(".right-side").css("margin-left", "280px");
+
+        } else {
+            element.css("display", "none");
+            $(".navbar-dashboard-for-student").css("margin-left", "0");
+            $(x).removeClass("change");
+            $(".right-side").css("margin-left", "10px");
+
+
+        }
+    }
+
+    function change(x) {
+        x.classList.toggle("change");
+    }
+
+
+</script>
+<script src="/JS/index.js"></script>
+
+</body>
+
+</html>
