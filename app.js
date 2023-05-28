@@ -10,6 +10,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 mongoose.set("strictQuery", false);
+const dotenv = require('dotenv');
+dotenv.config();
 
 mongoose.connect('mongodb://127.0.0.1:27017/DE'); // connect to mongoDB localhost
 

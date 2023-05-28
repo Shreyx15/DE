@@ -39,7 +39,7 @@
             </div>
             <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
             <div class="navbar-text-for-student">
-                Student Management System | Admin Dashboard
+                Attendance Management System
 
             </div>
 
@@ -81,15 +81,15 @@
 
                     </div>
                     <p class="form-select-title">Select Your Relevent Class</p>
+                    <form action="/users/faculty/mark-attendance" method="get">
+                        <select class="form-select" aria-label="Default select example" name="subject">
+                            <option value="TOC" selected>Computer Engineering - Sem 6 - TOC</option>
+                            <option value="AJP">Computer Engineering - Sem 6 - AJP</option>
+                        </select>
+                        <input type="submit" value="See Student's List" class="btn btn-primary">
 
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Computer Engineering - Sem 5 - ADA</option>
-                        <option value="2">Computer Engineering - Sem 4 - PDS</option>
-                        <option value="3">Computer Engineering - Sem 3 - Data Structures</option>
-                    </select>
-                    <a href="/mark-attendance" class="btn btn-primary">
-                        <p class="btn-text">See Student's List</p>
-                    </a>
+                    </form>
+
                 </div>
             </div>
 

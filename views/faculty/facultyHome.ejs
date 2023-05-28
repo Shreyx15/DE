@@ -108,7 +108,7 @@
             </div>
             <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
             <div class="navbar-text-for-student">
-                Student Management System | Admin Dashboard
+                Student Management System | Faculty Dashboard
 
             </div>
 
@@ -126,7 +126,8 @@
             <!-- <hr> -->
             <a href="/facultyHome" style="padding: 10px 20px;">
                 <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Home</span></a>
-            <a href="/selectClass"><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span class="link-text">Take
+            <a href="/users/faculty/selectClass"><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span
+                    class="link-text">Take
                     Attendance</span></a>
             <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
                     Attendance</span></a>
@@ -155,11 +156,14 @@
                     <img src="/images/Reportjpg.jpg"
                         style="width: 90%; height: 55%; box-shadow: none; border-radius: 0%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="right-side-paregraph">
-                        <h5 style="font-weight: bold;">Student Report</h5>
-                        <p>Record Daily Attendance of your students here you cannot edit update the records after one
+                        <h5 style="font-weight: bold;">Download Report</h5>
+                        <p>Download Daily Attendance of your students here you cannot edit update the records after one
                             month</p>
 
-                        <button style="background-color:rgb(19, 19, 184) ;">Student Report</button>
+                        <button style="background-color:rgb(19, 19, 184) ;"> <a
+                                href="/users/faculty/download_attendance"
+                                style="text-decoration: none; color: white;">Student
+                                Report</a></button>
                     </div>
                 </form>
 
@@ -167,11 +171,12 @@
                     <img src="/images/subject-icon.jpg"
                         style="width: 90%; height: 55%; box-shadow: none; border-radius: 0%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="right-side-paregraph">
-                        <h5 style="font-weight: bold;">Subject Report</h5>
-                        <p>Record Daily Attendance of your students here you cannot edit update the records after one
+                        <h5 style="font-weight: bold;">View Attendance</h5>
+                        <p>View Daily Attendance of your students here you cannot edit update the records after one
                             month</p>
 
-                        <button style="background-color:rgb(229, 37, 37) ;">Subject Report</button>
+                        <button style="background-color:rgb(229, 37, 37) ;"><a href="/users/faculty/view_attendance"
+                                style="text-decoration: none; color: white;">View Attendance</button>
                     </div>
 
 
@@ -215,6 +220,10 @@
         function change(x) {
             x.classList.toggle("change");
         }
+
+
+
+
     </script>
 </body>
 

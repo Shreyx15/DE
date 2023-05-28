@@ -114,7 +114,7 @@
       </div>
       <!-- <i class="fa-solid fa-bars fs-1x" onclick="myFunction()"></i> -->
       <div class="navbar-text-for-student">
-        Student Management System | Admin Dashboard
+        Student Management System
 
       </div>
 
@@ -151,52 +151,49 @@
         <div class="card-body">
           <p class="card-text-mark-attendance">COURSE : CE
             <span class="separator"> || </span>
-            Sem - 5
+            Sem - 6
             <span class="separator"> || </span>
-            ADA
+            <%= subject %>
           </p>
 
           <div class="text-date">
-            DATE <span style="margin-left: 20px;">2022-09-15</span>
+            DATE <span style="margin-left: 20px;">19-05-2023</span>
           </div>
           <button type="button" class="btn btn-primary beside-date">All-Present</button>
-
           <table class="table">
             <thead class="table-dark">
               <tr>
                 <th scope="col">Enrollment No.</th>
                 <th scope="col" style="width: 40%;">Student Name</th>
-                <th scope="col">Mark-Attendance </th>
+                <th scope="col">Select </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">200160107001</th>
-                <td>Shrey Vaghela</td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <th scope="row">200160107002</th>
-                <td>Solanki Dushyant</td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <th scope="row">200160107003</th>
-                <td>Nagaria Jay</td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <th scope="row">200160107003</th>
-                <td>Dodiya Satyajeetsinh</td>
-                <td><input type="checkbox" /></td>
-              </tr>
-            </tbody>
+
+
+            <form action="/users/faculty/mark-attendance" method="post">
+
+              <% students.forEach(function (s) {%>
+                <tr>
+                  <th scope="row">
+                    <%= s.enrollment_number %>
+                  </th>
+                  <td>
+                    <%= s.name %>
+                  </td>
+                  <td><input type="checkbox" name="attendance_numbers" value="<%= s.enrollment_number %>"
+                      id="enrollment" /></td>
+                </tr>
+                <input type="hidden" value="<%= subject %>" name="subject">
+                <%});%>
+                  <input type="submit" class="btn btn-primary" value="Mark-Attendance" id="mark-attendance-btn">
+
+            </form>
+            <button type="button" value="" class="btn btn-primary" style="margin-left: 7px;" id="sendMail">Send
+              Mail</button>
+
+
           </table>
 
-
-          <a href="#" class="btn btn-primary">
-            <p class="btn-text">Mark Attendance</p>
-          </a>
         </div>
       </div>
 
@@ -240,6 +237,53 @@
     function change(x) {
       x.classList.toggle("change");
     }
+
+    // Get all the checkbox elements in the document
+
+    $('#mark-attendance-btn').click(function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+
+      // Get the form data
+      const arr = [];
+      let subject = document.getElementsByName("subject")[0].value;
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => {
+        arr.push(checkbox.value);
+      });
+
+      // Do your stuff with the form data here
+
+      // // Manually submit the form data using $.ajax()
+      // $.ajax({
+
+      //   type: 'POST',
+      //   url: '/users/faculty/mark-attendance',
+      //   data: formData
+      // });
+
+      $.post('/users/faculty/mark-attendance', { data: arr, subject: subject }, function (response) {
+        console.log('Response from server:', response);
+        window.location.href = "/users/faculty/facultyHome";
+      });
+    });
+
+    $('#sendMail').click(function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+
+      // Get the form data
+      const arr = [];
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => {
+        arr.push(checkbox.value);
+      });
+
+      $.post('/users/faculty/sendMail', { data: arr }, function (response) {
+        console.log('Response from server:', response);
+        window.location.href = "/users/faculty/facultyHome";
+      });
+    });
   </script>
 </body>
 

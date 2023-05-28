@@ -229,3 +229,14 @@ CSS FOR CLASS-SELECTION CARD */
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
 }
+
+input[name="date"] {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.list-btn {
+    width: 200px;
+    padding: 9px;
+    margin: 0 0 0 10px;
+}

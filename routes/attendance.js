@@ -13,8 +13,8 @@ router.post("/takeAttendance", function (req, res) {
     const class_number = req.body.class_number;
     const lon1 = 72.9677824;
     const lat1 = 22.5673216;
-    const lat2 = req.body.latitude;
-    const lon2 = req.body.longitude;
+    const lat2 = 22.5673216;
+    const lon2 = 72.9677824;
 
     async function isValid() {
         const oneHour = 60 * 60 * 1000; // milliseconds in one hour
@@ -35,6 +35,7 @@ router.post("/takeAttendance", function (req, res) {
     }
 
     if (isValid()) {
+        // console.log(distance(lat1, lon1, lat2, lon2));
         if (distance(lat1, lon1, lat2, lon2)) {
             const attendance = new Attendance({
                 enrollment_number: enrollment_number,
@@ -77,7 +78,7 @@ function distance(lat1, lon1, lat2, lon2) {
 
     const distance = earthRadius * c;
 
-    return distance < 10;
+    return distance <= 10;
 }
 
 function deg2rad(deg) {

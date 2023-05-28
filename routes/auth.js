@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const session = require('express-session');
 const { Student, Faculty, Admin } = require('../Models/db');
 const bcrypt = require('bcrypt');
 
@@ -22,8 +23,8 @@ router.post("/login", function (req, res) {
                     } else {
                         req.session.facultyId = faculty._id;
                         req.session.isLoggedin = true;
-                        req.session.username = faculty.username;
-                        console.log(faculty._id);
+                        req.session.user = faculty.username;
+                        req.session.save();
                         res.cookie('sessionId', req.session.id);
                         res.redirect('/users/faculty/facultyHome');
                     }

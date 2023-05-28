@@ -1,11 +1,47 @@
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
     crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-<form action="" id="attendance">
-    <input type="text" placeholder="Enrollment Number" name="enrollment_number">
-    <input type="text" placeholder="Subject" name="subject">
-    <input type="number" placeholder="Class Number" name="class_number">
-    <input type="submit" value="submit">
+
+<style>
+    .border {
+        width: 400px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .card {
+        width: 500px;
+        height: 300px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 20px;
+    }
+
+    .btn {
+        margin-left: 10px;
+    }
+
+    input {
+        margin-left: 20px;
+    }
+</style>
+
+<form action="" id="attendance" class="card">
+    <h1>Submit Your Attendance</h1>
+    <div class="form-group">
+        <input type="text" placeholder="Enrollment Number" name="enrollment_number" class="form-control border">
+        <input type="text" placeholder="Subject" name="subject" class="form-control border">
+        <input type="number" placeholder="Class Number" name="class_number" class="form-control border">
+        <input type="submit" value="submit" class="btn btn-primary">
+    </div>
+
 </form>
 
 <div class="attendance">
