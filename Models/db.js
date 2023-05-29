@@ -92,11 +92,32 @@ const attendanceSchema = new mongoose.Schema({
     }
 });
 
+
+const lectures_track = new mongoose.Schema({
+    subject: {
+        type: String
+    },
+    total_lectures_attended: {
+        type: Number,
+        required: true,
+        default: 0
+    }
+});
+
+const attendance_track = new mongoose.Schema({
+    enrollment_number: {
+        type: Number,
+        required: true
+    },
+    subject_attendance: [lectures_track]
+});
+
 const Student = mongoose.model('Student', studentSchema);
 const Faculty = mongoose.model('Faculty', facultySchema);
 const Admin = mongoose.model('Admin', adminSchema);
 const Attendance = mongoose.model('Attendance', attendanceSchema);
+const AttendanceTrack = mongoose.model('AttendanceTrack', attendance_track);
 
 module.exports = {
-    Student, Faculty, Admin, Attendance
+    Student, Faculty, Admin, Attendance, AttendanceTrack
 };

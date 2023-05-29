@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { verify } = require('./auth');
-const { Attendance, Student } = require('../Models/db');
+const { Attendance, Student, AttendanceTrack } = require('../Models/db');
 const exceljs = require('exceljs');
 const nodemailer = require('nodemailer');
 const { sendMail } = require('./sendMail');
@@ -54,7 +54,52 @@ router.post("/mark-attendance", verify, function (req, res) {
                 .catch((err) => {
                     console.log(err);
                 });
+
+
+            // Define an async function to handle the attendance update
+            async function updateAttendance(enrollmentNumber, subject) {
+                try {
+                    // Find the document with the matching enrollment number
+                    const doc = await AttendanceTrack.findOne({ enrollment_number: enrollmentNumber });
+
+                    if (!doc) {
+                        console.log('Document not found');
+                        // Handle the case when the document is not found
+                        return;
+                    }
+
+                    // Find the subject_attendance object for the specific subject
+                    const subjectAttendance = doc.subject_attendance.find(
+                        (attendance) => attendance.subject === subject
+
+                    );
+                    // console.log(subjectAttendance);
+                    if (subjectAttendance) {
+                        // Increment the total_lectures_attended for the specific subject
+                        subjectAttendance.total_lectures_attended += 1;
+                    }
+
+                    // Save the updated document
+                    const updatedDoc = await doc.save();
+
+                    // Document updated successfully
+                    console.log('Attendance updated successfully');
+                    console.log(updatedDoc);
+                    // Perform any additional actions
+                } catch (err) {
+                    console.error(err);
+                    // Handle the error
+                }
+            }
+
+            // Call the function with the appropriate enrollment number and subject values
+            updateAttendance(a, subject);
+
+
+
         });
+
+
 
 
     } else {
@@ -161,6 +206,52 @@ router.post("/sendMail", verify, function (req, res) {
     res.send("done");
 
 
+
+});
+
+router.get("/dummy", function (req, res) {
+    // Assuming you have a model named "Attendance" defined for the "attendance_track" schema
+
+    const dummyData = [
+        {
+            enrollment_number: 200160107039,
+            subject_attendance: [
+                {
+                    subject: 'AJP',
+                    total_lectures_attended: 0
+                },
+                {
+                    subject: 'TOC',
+                    total_lectures_attended: 0
+                }
+            ]
+        },
+        {
+            enrollment_number: 200160107044,
+            subject_attendance: [
+                {
+                    subject: 'AJP',
+                    total_lectures_attended: 12
+                },
+                {
+                    subject: 'TOC',
+                    total_lectures_attended: 6
+                }
+            ]
+        }
+    ];
+
+    // Insert the dummy data
+    AttendanceTrack.insertMany(dummyData, (err, docs) => {
+        if (err) {
+            console.error(err);
+            // Handle the error
+        } else {
+            console.log('Dummy data inserted successfully');
+            console.log(docs);
+            // Perform any additional actions
+        }
+    });
 
 });
 
