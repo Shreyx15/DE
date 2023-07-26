@@ -43,7 +43,6 @@ router.post('/addstudent', function (req, res) {
         email: email,
         semester: 5,
         course: course
-
     });
 
     student.save();

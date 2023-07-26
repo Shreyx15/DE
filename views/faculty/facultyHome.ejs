@@ -100,6 +100,13 @@
 
 
     <div class="container-dashboard">
+        <div class="logout">
+            <form action="/users/logout" method="get">
+                <h2>Do you want to logout?</h2>
+                <button type="submit" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-primary" onclick="hideLogout()">Cancel</button>
+            </form>
+        </div>
         <div class="navbar-dashboard-for-student" style="z-index: 1;">
             <div class="bars" onclick="myFunction(this)">
                 <div class="bar1"></div>
@@ -116,7 +123,7 @@
         <div class="left-bar-for-student" style="font-family: sans-serif;">
             <div class="left-bar-title" style="height: 97px; padding-top: 10px;">
                 <div class="image-logo">
-                    <img src="'/images/logo.png" alt="" srcset="">
+                    <img src="/images/logo.png" alt="" srcset="">
 
                 </div>
                 <div class="gecm-title" style="padding-top: 10px; font-size: 2.5rem; text-align: center;">
@@ -124,14 +131,16 @@
                 </div>
             </div>
             <!-- <hr> -->
-            <a href="/facultyHome" style="padding: 10px 20px;">
+            <a href="/users/faculty/facultyHome" style="padding: 10px 20px;">
                 <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Home</span></a>
             <a href="/users/faculty/selectClass"><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span
                     class="link-text">Take
                     Attendance</span></a>
-            <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
+            <a href="/users/faculty/view_attendance"><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span
+                    class="link-text">View
                     Attendance</span></a>
-            <a href=""><i class="fa-solid fa-book fs-1x fa-fw"></i><span class="link-text">Student Report</span></a>
+            <a href="#" onclick="displayLogout();"><i class="fa-solid fa-book fs-1x fa-fw"></i><span
+                    class="link-text">Logout</span></a>
 
 
 
@@ -139,7 +148,7 @@
         <div class="right-side">
             <div class="deshbord-card"
                 style="width: 80vw; background-color: white; padding: 20px; margin-top: 30px; padding-bottom: 0; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; border-radius: 7px;">
-                <form class="right-mark-attendance" action="/selectClass">
+                <form class="right-mark-attendance" action="/users/faculty/selectClass">
                     <img src="/images/attendance.jpg"
                         style="width: 90%; height: 55%; box-shadow: none; border-radius: 0%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="right-side-paregraph">
@@ -222,7 +231,14 @@
         }
 
 
-
+        function hideLogout() {
+            var logoutElement = document.querySelector('.logout');
+            logoutElement.style.display = 'none';
+        }
+        function displayLogout() {
+            var logoutElement = document.getElementsByClassName("logout")[0];
+            logoutElement.style.display = 'block';
+        }
 
     </script>
 </body>

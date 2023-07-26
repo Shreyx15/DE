@@ -101,16 +101,35 @@ const lectures_track = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    percentage: {
+        type: Number,
+        required: true
     }
 });
+
 
 const attendance_track = new mongoose.Schema({
     enrollment_number: {
         type: Number,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
     subject_attendance: [lectures_track]
 });
+
+attendance_track.pre('save', function (next) {
+    const subjectAttendances = this.subject_attendance;
+    for (let i = 0; i < subjectAttendances.length; i++) {
+        const subjectAttendance = subjectAttendances[i];
+        subjectAttendance.percentage = (subjectAttendance.total_lectures_attended / 20) * 100;
+    }
+    next();
+});
+
 
 const Student = mongoose.model('Student', studentSchema);
 const Faculty = mongoose.model('Faculty', facultySchema);

@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const { Attendance } = require('../Models/db');
-
+const { updateAttendance } = require("./faculty");
 
 
 router.get("/attendance", function (req, res) {
     res.render("attendance");
 });
 
-router.post("/takeAttendance", function (req, res) {
+router.post("/takeAttendance", async function (req, res) {
     const enrollment_number = req.body.enrollment_number;
     const subject = req.body.subject;
     const class_number = req.body.class_number;
@@ -22,11 +22,11 @@ router.post("/takeAttendance", function (req, res) {
         try {
             const attendance = await Attendance.findOne({ enrollment_number: enrollment_number });
             const currentTime = Date.now();
-            const createdAt = attendance.created_at.getTime(); // get time in milliseconds
+            const createdAt = attendance.created_at.getTime(); // get time in milliseconds  
             const difference = currentTime - createdAt; // difference in milliseconds
             const hours = difference / oneHour; // difference in hours
-
-            return hours <= 1;
+            console.log(hours);
+            return hours >= 1;
         } catch (err) {
             // handle error
             console.log(err);
@@ -34,7 +34,7 @@ router.post("/takeAttendance", function (req, res) {
         }
     }
 
-    if (isValid()) {
+    if (await isValid()) {
         // console.log(distance(lat1, lon1, lat2, lon2));
         if (distance(lat1, lon1, lat2, lon2)) {
             const attendance = new Attendance({
@@ -51,6 +51,10 @@ router.post("/takeAttendance", function (req, res) {
                 .catch((err) => {
                     console.log(err);
                 });
+
+
+            updateAttendance(enrollment_number, subject);
+
         } else {
             res.send("go to college and dont try this again!");
         }

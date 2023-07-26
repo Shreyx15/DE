@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const session = require('express-session');
 const { Student, Faculty, Admin } = require('../Models/db');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 router.get("/login", function (req, res) {
     res.render("login");
@@ -10,31 +10,27 @@ router.get("/login", function (req, res) {
 router.post("/login", function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
-    let role = req.body.role;
 
-    if (role === "Faculty") {
-        Faculty.findOne({ username: username }).exec(function (err, faculty) {
-            if (err) {
-                console.error(err);
-            } else {
-                bcrypt.compare(password, faculty.password, (err, result) => {
-                    if (!result) {
-                        res.send("wrong password");
-                    } else {
-                        req.session.facultyId = faculty._id;
-                        req.session.isLoggedin = true;
-                        req.session.user = faculty.username;
-                        req.session.save();
-                        res.cookie('sessionId', req.session.id);
-                        res.redirect('/users/faculty/facultyHome');
-                    }
-                });
-            }
-        });
+    Faculty.findOne({ username: username }).exec(function (err, faculty) {
+        if (err) {
+            console.error(err);
+        } else {
+            bcrypt.compare(password, faculty.password, (err, result) => {
+                if (!result) {
+                    res.send("wrong password");
+                } else {
+                    req.session.facultyId = faculty._id;
+                    req.session.isLoggedin = true;
+                    req.session.user = faculty.username;
+                    req.session.save();
+                    res.cookie('sessionId', req.session.id);
+                    res.redirect('/users/faculty/facultyHome');
+                }
+            });
+        }
+    });
 
-    } else if (role === "Student") {
-        console.log("do something!!");
-    }
+
 });
 
 
@@ -61,7 +57,6 @@ router.post("/register", function (req, res) {
                 .catch((err) => {
                     console.log(err);
                 });
-
         } else if (role === "student") {
             Student.updateOne({ username: username }, { password: hash })
                 .then(() => {
@@ -91,6 +86,15 @@ router.get("/logout", verify, function (req, res) {
     });
 });
 
+router.get("/addstudent", function (req, res) {
+    res.render("admin/addstudent");
+});
+router.get("/successregister", function (req, res) {
+    res.render("successregister");
+});
+router.post("/registerStudent", function (req, res) {
+    res.redirect("/users/successregister");
+});
 function verify(req, res, next) {
     if (!isEmpty(req.cookies)) {
         next();

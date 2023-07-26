@@ -31,6 +31,13 @@
 
 
     <div class="container-dashboard">
+        <div class="logout">
+            <form action="/users/logout" method="get">
+                <h2>Do you want to logout?</h2>
+                <button type="submit" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-primary" onclick="hideLogout()">Cancel</button>
+            </form>
+        </div>
         <div class="navbar-dashboard-for-student" style="z-index: 1;">
             <div class="bars" onclick="myFunction(this)">
                 <div class="bar1"></div>
@@ -55,14 +62,16 @@
                 </div>
             </div>
             <!-- <hr> -->
-            <a href="/facultyHome" style="padding: 10px 20px;">
+            <a href="/users/faculty/facultyHome" style="padding: 10px 20px;">
                 <i class="fa-solid fa-gauge fs-1x fa-fw"></i><span class="link-text">Home</span></a>
-            <a href="/selectClass"><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span class="link-text">Take
+            <a href="/users/faculty/selectClass"><i class="fa-solid fa-list-check fs-1x fa-fw"></i><span
+                    class="link-text">Take
                     Attendance</span></a>
-            <a href=""><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span class="link-text">View
+            <a href="/users/faculty/view_attendance"><i class="fa-regular fa-calendar-days fs-1x fa-fw"></i><span
+                    class="link-text">View
                     Attendance</span></a>
-            <a href=""><i class="fa-solid fa-book fs-1x fa-fw"></i><span class="link-text">Student Report</span></a>
-
+            <a href="#" onclick="displayLogout();"><i class="fa-solid fa-book fs-1x fa-fw"></i><span
+                    class="link-text">Logout</span></a>
 
 
         </div>
@@ -127,6 +136,15 @@
 
         function change(x) {
             x.classList.toggle("change");
+        }
+
+        function hideLogout() {
+            var logoutElement = document.querySelector('.logout');
+            logoutElement.style.display = 'none';
+        }
+        function displayLogout() {
+            var logoutElement = document.getElementsByClassName("logout")[0];
+            logoutElement.style.display = 'block';
         }
     </script>
 </body>

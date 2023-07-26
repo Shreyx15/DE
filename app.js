@@ -5,7 +5,7 @@ const { stringify } = require('nodemon/lib/utils');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
@@ -13,7 +13,7 @@ mongoose.set("strictQuery", false);
 const dotenv = require('dotenv');
 dotenv.config();
 
-mongoose.connect('mongodb://127.0.0.1:27017/DE'); // connect to mongoDB localhost
+mongoose.connect('mongodb+srv://Shreyx15:shrey2002@cluster0.8cux0ks.mongodb.net/SAMS_DE?retryWrites=true&w=majority'); // connect to mongoDB localhost
 
 app.use(express.json());
 app.use(cookieParser());
@@ -30,7 +30,7 @@ const { router } = require("./routes/auth");
 const attendanceRoute = require("./routes/attendance");
 
 app.use('/users/admin', adminRoutes);
-app.use('/users/faculty', facultyRoutes);
+app.use('/users/faculty', facultyRoutes.router);
 app.use('/users', router);
 app.use('', attendanceRoute);
 
