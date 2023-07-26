@@ -15,8 +15,8 @@ const sendMail = function main(email) {
             pass: process.env.MAIL_PASSWORD,
             clientId: process.env.OAUTH_CLIENTID,
             clientSecret: process.env.OAUTH_CLIENT_SECRET,
-            refreshToken: "1//043oYGBFyIFnFCgYIARAAGAQSNgF-L9Iri2m4YDL7yWpyCuUmPOqsJaL5Pn1qtbBm2O7KUa1tsTf3qdVx9YZMqe7MsS_Oqsyefg",
-            accessToken: "ya29.a0AWY7Cknt-JG-kwU1iRHxo-hclNpK13-dYtpojVS6fRhki75tOZBvfeIeSoyZ8Cu7q0iJFtaeF7NElFdWRVof7jlxU6tPlWUk2RMhB-tUx9eiyhwFdKPHd2tjfHsM9Lv1Z5Br8sSK8M61NSIjmDqqYuHa91snaCgYKAdYSARMSFQG1tDrpdp6Eo7gO_cK1xYcxUkAZyQ0163",
+            refreshToken: "1//046_hyqqqgR-pCgYIARAAGAQSNgF-L9Ir9bOe3Z576oLVUXkemxEtRdDW9OopRTOedeqTCuOfoBxMFqFOTXhrna_5-ehSevzXOw",
+            accessToken: "ya29.a0AbVbY6MxrOueSABBIQa3OPXpkuJ9_V7NRiBThqX3jObQiyEiwicSwY_NySdLA8Rw57-nOwrQ7Ti08C6GBv9rY1hlLsuSyBbepJRdcN1g_-2KyCHp0Zn6knFm_qHnZT0xXMvqlZhqkZLLtVJyZoz-eAZOo6r6aCgYKAaESARMSFQFWKvPl_RqFaPZexzBXQZKoNb5VGA0163",
         }
     });
 
