@@ -86,14 +86,21 @@
                     <h6 class="card-title">SELECT CLASS</h6>
                     <p class="card-text">Date</p>
                     <div class="md-form md-outline input-with-post-icon datepicker" id="customDays">
-                        <input placeholder="Select date" type="date" id="Customization" class="form-control">
-
+                        <input placeholder="" type="text" id="Customization" class="form-control"
+                            value="<%= new Date().toLocaleDateString() %>" readonly>
                     </div>
+
+
                     <p class="form-select-title">Select Your Relevent Class</p>
                     <form action="/users/faculty/mark-attendance" method="get">
                         <select class="form-select" aria-label="Default select example" name="subject">
-                            <option value="TOC" selected>Computer Engineering - Sem 6 - TOC</option>
-                            <option value="AJP">Computer Engineering - Sem 6 - AJP</option>
+
+                            <% user.forEach((s)=> { %>
+
+                                <option value="<%= s%>">
+                                    <%= s%>
+                                </option>
+                                <%});%>
                         </select>
                         <input type="submit" value="See Student's List" class="btn btn-primary">
 
@@ -146,6 +153,10 @@
             var logoutElement = document.getElementsByClassName("logout")[0];
             logoutElement.style.display = 'block';
         }
+
+
+
+
     </script>
 </body>
 

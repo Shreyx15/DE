@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SignIn&SignUp</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="/CSS/login.css">
 
 </head>
@@ -20,12 +22,12 @@
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" required />
+                        <input type="text" placeholder="Username" name="username" value="faculty" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock "></i>
-                        <input type="password" placeholder="Password" name="password" required />
+                        <input type="password" placeholder="Password" name="password" value="faculty" required />
                     </div>
                     <button type="submit" class="btn solid" id="login-button">
                         Login</a>
@@ -65,5 +67,10 @@
 
 
 </body>
+<script>
+    $(document).ready(() => {
+        alert("user data is already added keep it as it is!");
+    });
+</script>
 
 </html>

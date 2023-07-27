@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const { verify } = require('./auth');
-const { Attendance, Student, AttendanceTrack } = require('../Models/db');
+const { Attendance, Student, AttendanceTrack, Faculty } = require('../Models/db');
 const exceljs = require('exceljs');
 const nodemailer = require('nodemailer');
 const { sendMail } = require('./sendMail');
 const req = require('express/lib/request');
+const { default: mongoose } = require('mongoose');
 
 
 
@@ -13,7 +14,14 @@ router.get("/facultyHome", verify, function (req, res) {
 });
 
 router.get("/selectClass", function (req, res) {
-    res.render("faculty/select_class");
+    let fid = req.session.facultyId;
+    fid = mongoose.Types.ObjectId(fid);
+    Faculty.findById(fid).then((user) => {
+        res.render("faculty/select_class", { 'user': user.subjects });
+
+    }).catch((err) => {
+        console.error(err);
+    });
 });
 
 router.get("/mark-attendance", verify, function (req, res) {
