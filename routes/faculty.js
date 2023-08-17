@@ -66,14 +66,7 @@ router.post("/mark-attendance", verify, function (req, res) {
 
             // Call the function with the appropriate enrollment number and subject values
             updateAttendance(a, subject);
-
-
-
         });
-
-
-
-
     } else {
         res.send("error");
     }
@@ -85,8 +78,6 @@ router.post("/mark-attendance", verify, function (req, res) {
 router.get("/download_attendance", verify, function (req, res) {
 
     const username = req.session.user;
-
-
     // console.log(user);
     createAttendanceExcelFile(req, res);
 
@@ -94,12 +85,8 @@ router.get("/download_attendance", verify, function (req, res) {
 async function createAttendanceExcelFile(req, res) {
     const workbook = new exceljs.Workbook();
     const worksheet = workbook.addWorksheet('Attendance');
-
     // Fetch attendance data from the database
-
-
     const attendanceData = await Attendance.find({});
-
     // Set up headers for the Excel file
     worksheet.columns = [
         { header: 'Enrollment Number', key: 'enrollment_number', width: 20 },

@@ -8,14 +8,11 @@ router.get("/attendance", function (req, res) {
 });
 
 router.post("/takeAttendance", async function (req, res) {
-    const enrollment_number = req.body.enrollment_number;
-    const subject = req.body.subject;
-    const class_number = req.body.class_number;
-    const lon1 = 72.9677824;
-    const lat1 = 22.5673216;
-    const lat2 = 22.5673216;
-    const lon2 = 72.9677824;
-
+    const { enrollment_number, subject, class_number, longitude, latitude } = req.body;
+    const lon1 = 72.9637728;
+    const lat1 = 22.5698599;
+    const lat2 = latitude;
+    const lon2 = longitude;
     async function isValid() {
         const oneHour = 60 * 60 * 1000; // milliseconds in one hour
 
