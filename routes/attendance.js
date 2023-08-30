@@ -40,7 +40,6 @@ router.post("/takeAttendance", async function (req, res) {
                 class_number: class_number
 
             });
-
             attendance.save()
                 .then(() => {
                     res.send("Attendance marked successfully!");
@@ -48,8 +47,6 @@ router.post("/takeAttendance", async function (req, res) {
                 .catch((err) => {
                     console.log(err);
                 });
-
-
             updateAttendance(enrollment_number, subject);
 
         } else {
