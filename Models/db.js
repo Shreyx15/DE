@@ -39,15 +39,27 @@ const studentSchema = new mongoose.Schema({
     subjects: {
         type: [String],
         required: true
+    },
+    image: {
+        data: Buffer,
+        contentType: String
     }
 });
 
+
+
+const imageSchema = new mongoose.Schema({
+    image: {
+        type: String,
+        required: true
+    }
+});
 
 const facultySchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true    
+        unique: true
     },
     password: {
         type: String,
@@ -136,7 +148,8 @@ const Faculty = mongoose.model('Faculty', facultySchema);
 const Admin = mongoose.model('Admin', adminSchema);
 const Attendance = mongoose.model('Attendance', attendanceSchema);
 const AttendanceTrack = mongoose.model('AttendanceTrack', attendance_track);
+const Image = mongoose.model('Image', imageSchema);
 
 module.exports = {
-    Student, Faculty, Admin, Attendance, AttendanceTrack
+    Student, Faculty, Admin, Attendance, AttendanceTrack, Image
 };

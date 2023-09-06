@@ -1,8 +1,9 @@
-const { Student } = require('../Models/db');
+const { Student, Image } = require('../Models/db');
 const router = require('express').Router();
 const { ObjectId } = require("mongodb");
 const fs = require('fs');
 const path = require('path');
+const { resolveSoa } = require('dns');
 
 router.post("/add_student", async function (req, res) {
     const {
@@ -59,19 +60,21 @@ router.post("/delete_student/:student_id", async function (req, res) {
 });
 
 
-router.post("/uploads/image", async function (req, res) {
-    const uploadedFile = await req.files;
-    // res.json({ uploadedFile });
-    const uploadPath = path.join(__dirname, "uploads", uploadedFile.name);
+router.post("/upload", async function (req, res) {
+    const base64Image = req.body.image;
 
-    uploadedFile.mv(uploadPath, (err) => {
-        if (err) {
-            return res.status(500).send(err);
-        } else {
-            res.send("File uploaded successfully!");
-        }
+    const img = new Image({
+        image: base64Image
     });
+
+    const newImg = await img.save();
+    console.log(newImg.image);
+    res.json({ image: newImg.image });
 
 });
 
+
+router.get("/upload", function (req, res) {
+    res.render("admin/upload");
+});
 module.exports = router;

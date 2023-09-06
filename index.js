@@ -12,9 +12,11 @@ const mongoose = require('mongoose');
 mongoose.set("strictQuery", false);
 const dotenv = require('dotenv');
 dotenv.config();
-
+express.urlencoded({ extended: true });
+const fileUpload = require('express-fileupload');
 mongoose.connect('mongodb+srv://Shreyx15:shrey2002@cluster0.8cux0ks.mongodb.net/SAMS_DE?retryWrites=true&w=majority'); // connect to mongoDB localhost
 
+app.use(fileUpload());
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Upload</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <h1>Image Upload Example</h1>
+    <input type="file" id="fileInput">
+    <button id="uploadButton">Upload Image</button>
+    <img src="" alt="" id="image">
+
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', function () {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function () {
+                    const base64Image = reader.result;
+                    uploadImage(base64Image);
+                };
+            }
+        });
+
+        function uploadImage(file) {
+            $.ajax({
+                type: 'POST',
+                url: "/users/admin/upload",
+                data: { image: file },
+                success: function (response) {
+                    console.log(response.image);
+                    $("#image").attr("src", response.image);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
