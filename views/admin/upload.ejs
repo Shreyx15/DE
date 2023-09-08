@@ -13,37 +13,52 @@
     <input type="file" id="fileInput">
     <button id="uploadButton">Upload Image</button>
     <img src="" alt="" id="image">
-
+    <div id="img"></div>
     <script>
-        document.getElementById('uploadButton').addEventListener('click', function () {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
+        const url = "https://api.cloudinary.com/v1_1/drq6qjbpg/image/upload";
 
-            if (file) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
+        document.getElementById('uploadButton').addEventListener('click', async function () {
+            try {
+                const fileInput = document.getElementById('fileInput');
+                const img = document.getElementById('image');
+                const file = fileInput.files[0];
+                const fd = new FormData();
 
-                reader.onload = function () {
-                    const base64Image = reader.result;
-                    uploadImage(base64Image);
-                };
+                fd.append('file', file);
+                fd.append('upload_preset', 'Shrey Vaghela');
+
+                const response = await fetch(url, {
+                    method: "POST",
+                    body: fd
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error during uploading image to cloudinary.');
+                }
+
+                const data = await response.json();
+
+                const uploadResponse = await fetch("/users/admin/upload", {
+                    method: "POST",
+                    body: JSON.stringify({ imageUrl: data.secure_url }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (!uploadResponse.ok) {
+                    throw new Error("error uploading image to server");
+                }
+
+            } catch (error) {
+                console.error(error);
             }
+
+
+
         });
 
-        function uploadImage(file) {
-            $.ajax({
-                type: 'POST',
-                url: "/users/admin/upload",
-                data: { image: file },
-                success: function (response) {
-                    console.log(response.image);
-                    $("#image").attr("src", response.image);
-                },
-                error: function (error) {
-                    console.error(error);
-                }
-            });
-        }
+
     </script>
 </body>
 

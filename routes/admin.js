@@ -3,7 +3,16 @@ const router = require('express').Router();
 const { ObjectId } = require("mongodb");
 const fs = require('fs');
 const path = require('path');
-const { resolveSoa } = require('dns');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    cloud_name: 'drq6qjbpg',
+    api_key: '974438935726475',
+    api_secret: 'FUhM3MyKCmElu0uEeL-wFqWRjlM',
+    secure: true
+});
+
 
 router.post("/add_student", async function (req, res) {
     const {
@@ -61,16 +70,14 @@ router.post("/delete_student/:student_id", async function (req, res) {
 
 
 router.post("/upload", async function (req, res) {
-    const base64Image = req.body.image;
-
-    const img = new Image({
-        image: base64Image
+    const data = req.body;
+    console.log(data.imageUrl);
+    const newImg = new Image({
+        image: data.imageUrl
     });
 
-    const newImg = await img.save();
-    console.log(newImg.image);
-    res.json({ image: newImg.image });
-
+    newImg.save();
+    res.send("image stored!");
 });
 
 
